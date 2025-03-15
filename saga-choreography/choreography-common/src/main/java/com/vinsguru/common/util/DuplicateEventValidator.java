@@ -7,6 +7,13 @@ import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
 
+/**
+ * is designed to prevent duplicate event processing in a reactive Spring WebFlux application.
+ * It ensures that if an event has already been processed (e.g., exists in a database),
+ * the processing flow is halted with an error
+ *         isPresentInDB(someId): Returns Mono<Boolean> (true if the event is a duplicate).
+ *         process(someId): Runs the actual processing if the event is not a duplicate.
+ */
 public class DuplicateEventValidator {
 
     private static final Logger log = LoggerFactory.getLogger(DuplicateEventValidator.class);

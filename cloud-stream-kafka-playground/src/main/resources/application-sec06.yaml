@@ -9,10 +9,10 @@ spring:
         processor-in-0:
           destination: order-events
           group: processor-group
-        digital-delivery-out:
-          destination: digital-topic
-        physical-delivery-out:
-          destination: physical-topic
+#        digital-delivery-out:
+#          destination: digital-topic
+#        physical-delivery-out:
+#          destination: physical-topic
         digitalDelivery-in-0:
           destination: digital-topic
           group: digital-group

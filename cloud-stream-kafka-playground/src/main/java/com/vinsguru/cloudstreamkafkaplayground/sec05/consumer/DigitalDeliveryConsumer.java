@@ -13,12 +13,12 @@ import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
 
-@Configuration
+//@Configuration
 public class DigitalDeliveryConsumer {
 
     private static final Logger log = LoggerFactory.getLogger(DigitalDeliveryConsumer.class);
 
-    @Bean
+//    @Bean
     public Function<Flux<Message<DigitalDelivery>>, Mono<Void>> digitalDelivery() {
         return flux -> flux
                 .map(MessageConverter::toRecord)

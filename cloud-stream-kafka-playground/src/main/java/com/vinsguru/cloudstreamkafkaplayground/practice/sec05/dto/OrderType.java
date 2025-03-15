@@ -1,4 +1,6 @@
 package com.vinsguru.cloudstreamkafkaplayground.practice.sec05.dto;
 
 public enum OrderType {
+    DIGITAL,
+    PHYSICAL
 }

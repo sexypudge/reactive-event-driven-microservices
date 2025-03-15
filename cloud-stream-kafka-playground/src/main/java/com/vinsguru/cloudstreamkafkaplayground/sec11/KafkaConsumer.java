@@ -23,7 +23,15 @@ public class KafkaConsumer {
     public Consumer<Flux<Message<ContactMethod>>> consumer() {
         return flux -> flux
                 .doOnNext(s -> log.info("consumer received {}", s))
+//                .doOnNext(s -> log.info("consumer headers received {}", new String((byte[]) s.getHeaders().get("__TypeId__"))))
                 .subscribe();
     }
+//
+//    @Bean
+//    public Consumer<Flux<Integer>> consumer() {
+//        return flux -> flux
+//                .doOnNext(s -> log.info("consumer received {}", s))
+//                .subscribe();
+//    }
 
 }

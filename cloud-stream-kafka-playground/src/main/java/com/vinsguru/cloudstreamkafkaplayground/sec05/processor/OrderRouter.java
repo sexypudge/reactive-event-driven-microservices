@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
 
-@Configuration
+//@Configuration
 public class OrderRouter {
 
     private static final Logger log = LoggerFactory.getLogger(OrderRouter.class);
@@ -25,10 +25,10 @@ public class OrderRouter {
     private static final String DIGITAL_DELIVERY_CHANNEL = "digital-topic";
     private static final String PHYSICAL_DELIVERY_CHANNEL = "physical-topic";
 
-    @Autowired
+//    @Autowired
     private StreamBridge streamBridge;
 
-    @Bean
+//    @Bean
     public Function<Flux<Message<OrderEvent>>, Mono<Void>> processor() {
         return flux -> flux
                 .map(MessageConverter::toRecord)

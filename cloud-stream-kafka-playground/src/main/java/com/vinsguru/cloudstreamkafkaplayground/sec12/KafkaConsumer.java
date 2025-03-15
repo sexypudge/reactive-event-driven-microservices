@@ -15,6 +15,7 @@ import org.springframework.kafka.core.reactive.ReactiveKafkaProducerTemplate;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.function.Consumer;
 
 @Configuration
@@ -25,7 +26,8 @@ public class KafkaConsumer {
 //    @Bean
 //    public ReceiverOptionsCustomizer customizer(){
 //        return (s, ro) -> {
-//            return ro.consumerProperty(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, "234");
+//            return ro.consumerProperty(ConsumerConfig.GROUP_INSTANCE_ID_CONFIG, "234")
+//                    .subscription(List.of("input-topic", "output"));
 //        };
 //    }
 

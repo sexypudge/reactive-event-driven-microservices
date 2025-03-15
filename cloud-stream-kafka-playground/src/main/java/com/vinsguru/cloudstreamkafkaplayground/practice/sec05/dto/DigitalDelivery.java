@@ -1,4 +1,5 @@
 package com.vinsguru.cloudstreamkafkaplayground.practice.sec05.dto;
 
-public record DigitalDelivery() {
+public record DigitalDelivery(int productId,
+                              String email) {
 }

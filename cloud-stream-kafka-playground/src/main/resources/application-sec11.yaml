@@ -10,6 +10,12 @@ spring:
         consumer-in-0:
           destination: input-topic
           group: some-group
+          consumer:
+            maxAttempts: 3
+            backOffInitialInterval: 1000
+            backOffMaxInterval: 5000
+            backOffMultiplier: 2
+
       kafka:
         binder:
           consumer-properties:

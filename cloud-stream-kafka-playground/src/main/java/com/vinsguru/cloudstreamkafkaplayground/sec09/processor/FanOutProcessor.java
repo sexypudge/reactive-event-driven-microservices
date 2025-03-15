@@ -30,7 +30,9 @@ public class FanOutProcessor {
                     .subscribe();
             return Tuples.of(
                     sink.asFlux().transform(toDigitalDelivery()),
-                    sink.asFlux().filter(oe -> OrderType.PHYSICAL.equals(oe.orderType())).transform(toPhysicalDelivery())
+                    sink.asFlux()
+                            .filter(oe -> OrderType.PHYSICAL.equals(oe.orderType()))
+                            .transform(toPhysicalDelivery())
             );
         };
     }

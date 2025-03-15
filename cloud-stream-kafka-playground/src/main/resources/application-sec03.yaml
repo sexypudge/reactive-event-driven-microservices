@@ -14,3 +14,8 @@ spring:
           destination: output-topic
         producer-out-0:
           destination: input-topic
+
+#  End-to-End Message Flow
+#  KafkaProducer generates messages (msg 0, msg 1, ..., msg 9) → sends them to input-topic.
+#  KafkaProcessor reads from input-topic, processes each message (MSG 0, MSG 1, ..., MSG 9) → sends them to output-topic.
+#  KafkaConsumer listens to output-topic and logs the final processed messages.
