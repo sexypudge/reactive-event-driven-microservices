@@ -1,0 +1,24 @@
+package com.vinsguru.inventory.application.entity;
+
+import com.vinsguru.common.events.inventory.InventoryStatus;
+import com.vinsguru.common.events.order.OrderStatus;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+
+import java.util.UUID;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class OrderInventory {
+    @Id
+    private UUID inventoryId;
+    private UUID orderId;
+    private Integer productId;
+    private Integer quantity;
+    private InventoryStatus status;
+}

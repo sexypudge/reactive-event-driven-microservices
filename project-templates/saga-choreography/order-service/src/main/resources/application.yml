@@ -1,0 +1,41 @@
+spring:
+  cloud:
+    function:
+      definition: orderEventProducer;paymentEventProcessor;inventoryEventProcessor;shipmentEventProcessor
+    stream:
+      default:
+        producer:
+          useNativeEncoding: true
+      bindings:
+        order-events-channel:
+          destination: order-events
+        paymentEventProcessor-in-0:
+          destination: payment-events
+          group: order-service-group
+############################################################################################################
+# Commented out because we use the same channel for paymentEventProcessor and inventoryEventProcessor to send message to order-events topic
+#        paymentEventProcessor-out-0:
+#          destination: order-events
+#        inventoryEventProcessor-out-0:
+#          destination: order-events
+############################################################################################################
+        inventoryEventProcessor-in-0:
+          destination: inventory-events
+          group: order-service-group
+        shipmentEventProcessor-in-0:
+          destination: shipping-events
+          group: order-service-group
+      kafka:
+        binder:
+          consumer-properties:
+            "value.deserializer": org.springframework.kafka.support.serializer.JsonDeserializer
+            "key.deserializer": org.apache.kafka.common.serialization.StringDeserializer
+            "auto.offset.reset": "earliest"
+            "spring.json.trusted.packages": "com.vinsguru.common.events.*"
+          producer-properties:
+            "value.serializer": org.springframework.kafka.support.serializer.JsonSerializer
+            "key.serializer": org.apache.kafka.common.serialization.StringSerializer
+        bindings:
+          orderEventProducer-out-0:
+            producer:
+              recordMetadataChannel: orderEventResults
